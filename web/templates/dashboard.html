@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Device Dashboard</h1>
+<div class="row mb-4">
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <div class="card-header">Sensor Data</div>
+      <div class="card-body">
+        <table class="table" id="sensor-table">
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <div class="card-header">Registers</div>
+      <div class="card-body">
+        <table class="table" id="register-table">
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function updateSensors() {
+  fetch('/api/sensors').then(r => r.json()).then(data => {
+    let rows = '';
+    for (const [k, v] of Object.entries(data)) {
+      rows += `<tr><th>${k}</th><td>${v}</td></tr>`;
+    }
+    document.querySelector('#sensor-table tbody').innerHTML = rows;
+  });
+}
+function updateRegisters() {
+  fetch('/api/registers').then(r => r.json()).then(data => {
+    let rows = '';
+    for (const [k, v] of Object.entries(data)) {
+      rows += `<tr><th>${k}</th><td>${v}</td></tr>`;
+    }
+    document.querySelector('#register-table tbody').innerHTML = rows;
+  });
+}
+function refreshAll() {
+  updateSensors();
+  updateRegisters();
+}
+setInterval(refreshAll, 2000);
+document.addEventListener('DOMContentLoaded', refreshAll);
+</script>
+{% endblock %} 

@@ -1,0 +1,5 @@
+body { background: #f8fafc; }
+.navbar-brand { font-weight: bold; letter-spacing: 1px; }
+h1, h2, h3 { color: #1a237e; }
+.table { background: #fff; border-radius: 8px; overflow: hidden; }
+.card { border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); } 

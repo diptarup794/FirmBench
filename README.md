@@ -25,28 +25,6 @@ A professional, extensible Python-based simulator for embedded device firmware d
 
 ---
 
-## Architecture
-
-```mermaid
-graph TD
-    CLI[CLI Shell]
-    Device[DeviceSimulator]
-    UART[UARTInterface]
-    Sensors[SensorReader]
-    API[OpenWeatherMap API]
-    RealSensor[Real Sensor (UART/I2C/SPI)]
-    SimSensor[Simulated Data]
-
-    CLI --> Device
-    Device --> UART
-    Device --> Sensors
-    Sensors --> API
-    Sensors --> RealSensor
-    Sensors --> SimSensor
-```
-
----
-
 ## Features
 - **Simulated device registers and sensor data**
 - **Real sensor support** (UART, I2C, SPI, GPIO)
@@ -73,8 +51,7 @@ graph TD
 
 ### 1. Clone the Repository
 ```sh
-git clone <your-repo-url>
-cd Firmware
+git clone https://github.com/diptarup794/FirmBench
 ```
 
 ### 2. Install Dependencies
